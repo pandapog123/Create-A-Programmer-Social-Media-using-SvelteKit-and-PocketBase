@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+body {
+  --primary-color: rgb(245, 244, 244);
+  --secondary-color: rgb(235, 232, 232);
+  --tertiary-color: rgb(205, 205, 205);
+  --accent-color: rgb(236, 36, 93);
+  --destructive-color: rgb(249, 39, 39);
+  --complementary-color: rgb(36, 93, 236);
+  --text-color: rgb(26, 31, 37);
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --primary-color: rgb(21, 21, 22);
+    --secondary-color: rgb(32, 33, 33);
+    --tertiary-color: rgb(70, 73, 75);
+    --accent-color: rgb(243, 79, 126);
+    --destructive-color: rgb(238, 63, 63);
+    --complementary-color: rgb(79, 125, 243);
+    --text-color: rgb(236, 236, 236);
+  }
+}
