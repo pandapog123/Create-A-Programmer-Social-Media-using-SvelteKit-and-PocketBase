@@ -1,9 +1,17 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import Link from "$lib/components/Link.svelte";
+  import { pb } from "$lib/pocketbase";
 
   export let data: PageData;
 </script>
+
+<!-- <svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css"
+  />
+</svelte:head> -->
 
 <div class="main">
   <aside>
@@ -40,7 +48,14 @@
         {#if data.authenticated}
           <Link href="/profile" variant="ghost" align="left">
             <div class="link-content">
-              <iconify-icon icon="ic:baseline-account-circle"></iconify-icon>
+              {#if $pb && data.authModel && data.authModel.photo}
+                <img
+                  src={$pb.getFileUrl(data.authModel, data.authModel.photo)}
+                  alt={data.authModel.name}
+                />
+              {:else}
+                <iconify-icon icon="ic:baseline-account-circle"></iconify-icon>
+              {/if}
               <span> Profile </span>
             </div>
           </Link>
@@ -182,6 +197,12 @@
 
   iconify-icon {
     font-size: 22px;
+  }
+
+  img {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
   }
 
   .link-content span {
