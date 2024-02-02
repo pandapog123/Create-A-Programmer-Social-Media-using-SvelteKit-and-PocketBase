@@ -1,7 +1,7 @@
 import { pb } from "$lib/pocketbase";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
-import { validatePost, type Post } from "$lib/types";
+import { validatePost } from "$lib/types";
 import type { RecordModel } from "pocketbase";
 
 export const load = (async ({ params }) => {
@@ -14,30 +14,32 @@ export const load = (async ({ params }) => {
   }
 
   try {
-    const result = await pbInstance
-      .collection("posts")
-      .getOne<RecordModel>(params.id, {
+    async function getPost() {
+      if (!pbInstance) {
+        throw new Error("Post not found");
+      }
+
+      const result = await pbInstance.collection("posts").getOne(params.id, {
         expand: "user",
       });
 
-    let conversation = result;
+      let post = result;
 
-    if (!result.expand) {
-      return {
-        "not-found": true,
-      };
-    }
+      if (!result.expand) {
+        throw new Error("Post not found");
+      }
 
-    conversation.user = result.expand.user;
+      post.user = result.expand.user;
 
-    if (!validatePost(conversation)) {
-      return {
-        "not-found": true,
-      };
+      if (!validatePost(post)) {
+        throw new Error("Post not found");
+      }
+
+      return post;
     }
 
     return {
-      conversation,
+      post: await getPost(),
     };
   } catch (error) {
     return {

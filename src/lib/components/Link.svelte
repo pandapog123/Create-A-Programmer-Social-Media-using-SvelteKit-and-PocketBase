@@ -32,20 +32,21 @@
   }
 
   .small {
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 15px;
+    padding: 6px 16px;
     border-radius: 4px;
   }
 
   .large {
-    font-size: 14px;
-    padding: 8px 16px;
+    font-size: 18px;
+    padding: 12px 20px;
     border-radius: 8px;
   }
 
   .icon {
-    width: 32px;
-    height: 32px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
     display: grid;
     place-items: center;
     border-radius: 4px;

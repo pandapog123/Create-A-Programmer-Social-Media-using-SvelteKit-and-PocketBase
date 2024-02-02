@@ -31,22 +31,8 @@
           </div>
         </Link>
 
-        <Link href="/search" variant="ghost" align="left">
-          <div class="link-content">
-            <iconify-icon icon="material-symbols:search"></iconify-icon>
-            <span> Search </span>
-          </div>
-        </Link>
-
-        <Link href="/discover" variant="ghost" align="left">
-          <div class="link-content">
-            <iconify-icon icon="iconamoon:discover-bold"></iconify-icon>
-            <span> Discover </span>
-          </div>
-        </Link>
-
         {#if data.authenticated}
-          <Link href="/profile" variant="ghost" align="left">
+          <Link href="/profiles" variant="ghost" align="left">
             <div class="link-content">
               {#if $pb && data.authModel && data.authModel.photo}
                 <img
@@ -74,16 +60,8 @@
           <iconify-icon icon="octicon:home-fill-24"></iconify-icon>
         </Link>
 
-        <Link href="/search" variant="ghost" size="icon">
-          <iconify-icon icon="material-symbols:search"></iconify-icon>
-        </Link>
-
-        <Link href="/discover" variant="ghost" size="icon">
-          <iconify-icon icon="iconamoon:discover-bold"></iconify-icon>
-        </Link>
-
         {#if data.authenticated}
-          <Link href="/profile" variant="ghost" size="icon">
+          <Link href="/profiles" variant="ghost" size="icon">
             <iconify-icon icon="ic:baseline-account-circle"></iconify-icon>
           </Link>
 

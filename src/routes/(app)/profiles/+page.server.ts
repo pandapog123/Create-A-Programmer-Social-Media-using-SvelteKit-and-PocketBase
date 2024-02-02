@@ -10,5 +10,5 @@ export const load = (async ({ locals }) => {
     throw redirect(303, "/auth");
   }
 
-  return {};
+  throw redirect(303, `/profiles/${locals.pocketBase.authStore.model.id}`);
 }) satisfies PageServerLoad;
