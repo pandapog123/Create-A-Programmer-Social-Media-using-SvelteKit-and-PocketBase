@@ -37,9 +37,7 @@
 
 <pre>
   <div class="language">{post.language}</div>
-  <code bind:this={contentRef}>
-    {post.content}
-  </code>
+  <code bind:this={contentRef}>{post.content}</code>
 </pre>
 
 <section class="tags">
@@ -113,7 +111,7 @@
 
   code {
     border-radius: 8px;
-    padding: 0 1rem;
+    padding: 1rem;
     overflow-x: scroll;
   }
 
